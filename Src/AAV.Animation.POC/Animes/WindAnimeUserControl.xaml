@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.WindAnimeUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="1000" x:Name="ths"
+             Style="{StaticResource SlowShowElmntStyle}" >
+  <UserControl.Resources>
+    <LinearGradientBrush x:Key="BrushWind" EndPoint="1,.5" StartPoint="0,.5">
+      <GradientStop Color="#def" Offset=".0"/>
+      <GradientStop Color="#123" Offset=".2"/>
+      <GradientStop Color="#def" Offset=".2"/>
+      <GradientStop Color="#123" Offset=".4"/>
+      <GradientStop Color="#def" Offset=".4"/>
+      <GradientStop Color="#123" Offset=".6"/>
+      <GradientStop Color="#def" Offset=".6"/>
+      <GradientStop Color="#123" Offset=".8"/>
+      <GradientStop Color="#def" Offset=".8"/>
+      <GradientStop Color="#123" Offset="1."/>
+      <GradientStop Color="#def" Offset="1."/>
+    </LinearGradientBrush>
+
+    <Duration x:Key="du1">0:0:5</Duration>
+
+    <Style TargetType="Rectangle">
+      <Setter Property="Margin"                 Value="-200 0"                            />
+      <Setter Property="Width"                  Value="1000"                                />
+      <Setter Property="Height"                 Value="15"                                />
+      <Setter Property="RenderTransformOrigin"  Value="0.5,0.5"            />
+      <Setter Property="Fill"                   Value="{DynamicResource BrushWind}"         />
+    </Style>
+
+
+  </UserControl.Resources>
+  <UserControl.Triggers>
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard>
+        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" Duration="{StaticResource du1}" >
+
+          <!--<DoubleAnimation Storyboard.TargetName="ths" From="0" To="1" Duration="0:0:5" Storyboard.TargetProperty="Opacity" />-->
+          
+          <DoubleAnimation Storyboard.TargetName="bg1" From="+200" To="-200" Duration="{StaticResource du1}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" EasingFunction="{StaticResource si}" />
+          <DoubleAnimation Storyboard.TargetName="bg2" From="+200" To="-200" Duration="{StaticResource du1}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" EasingFunction="{StaticResource sb}" />
+          <DoubleAnimation Storyboard.TargetName="bg3" From="+200" To="-200" Duration="{StaticResource du1}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" EasingFunction="{StaticResource so}" />
+
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </UserControl.Triggers>
+  <StackPanel>
+    <Rectangle x:Name="bg1" >
+      <Rectangle.RenderTransform>
+        <TransformGroup>
+          <TranslateTransform />
+        </TransformGroup>
+      </Rectangle.RenderTransform>
+    </Rectangle>
+    <Rectangle x:Name="bg2" >
+      <Rectangle.RenderTransform>
+        <TransformGroup>
+          <TranslateTransform X="0" />
+        </TransformGroup>
+      </Rectangle.RenderTransform>
+    </Rectangle>
+    <Rectangle x:Name="bg3" >
+      <Rectangle.RenderTransform>
+        <TransformGroup>
+          <TranslateTransform X="0" />
+        </TransformGroup>
+      </Rectangle.RenderTransform>
+    </Rectangle>
+    <Button Content="AnimeStyle" Style="{StaticResource MyButtonStyle}" />
+    <Button Content="AnimeStyle" Style="{StaticResource SlowShowElmntStyle}" />
+  </StackPanel>
+</UserControl>

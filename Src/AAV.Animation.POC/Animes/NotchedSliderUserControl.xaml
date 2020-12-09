@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="AAV.Animation.POC.NotchedSliderUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             xmlns:local="clr-namespace:AAV.Animation.POC"
+             d:DesignHeight="450" d:DesignWidth="450">
+  <UserControl.Resources>
+
+    <Duration x:Key="du1"     >0:0:2.0</Duration>
+    <Duration x:Key="duY"     >0:0:0.5</Duration>
+
+    <Storyboard x:Key="_sbBusy" >
+      <DoubleAnimation To="0"  Duration="0:0:.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ln1" />
+      <DoubleAnimation To="25" Duration="0:0:.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ln1" />
+
+      <DoubleAnimation From="0"   To="25"                      Duration="0:0:0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ln1" EasingFunction="{StaticResource si}" />
+      <DoubleAnimation From="25"  To="0"                       Duration="0:0:0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ln1" EasingFunction="{StaticResource si}" />
+
+      <DoubleAnimation From="25"  To="100" BeginTime="0:0:0.5" Duration="0:0:0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ln1" EasingFunction="{StaticResource so}" />
+      
+      <DoubleAnimation From="100" To="125" BeginTime="0:0:1.0" Duration="0:0:0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ln1" EasingFunction="{StaticResource bo}" />
+      <DoubleAnimation From="0"   To="25"  BeginTime="0:0:1.0" Duration="0:0:0.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ln1" EasingFunction="{StaticResource bo}" />
+    </Storyboard>
+  </UserControl.Resources>
+  <UserControl.Triggers>
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource _sbBusy}" />
+    </EventTrigger>
+  </UserControl.Triggers>
+  <Grid>
+    <!--<Grid.Triggers>
+      <EventTrigger RoutedEvent="ButtonBase.Click">
+        <BeginStoryboard Storyboard="{StaticResource _sbBusy}" />
+      </EventTrigger>
+    </Grid.Triggers>-->
+    <Button Grid.Column="1" Grid.Row="3" x:Name="b1" Content="_X" IsDefault="True">
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click">
+          <BeginStoryboard Storyboard="{StaticResource _sbBusy}" />
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+
+    <Ellipse Grid.Column="1" Grid.Row="1" Stroke="#999" StrokeThickness="5" RenderTransformOrigin="0.5,0.5" x:Name="ln1" Fill="#aaa" Stretch="Fill" >
+      <Ellipse.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform />
+          <!--<TranslateTransform X="{Binding ElementName=s1, Path=Value, Converter={local:MultiplierConverter MultiplyBy=1}}" />-->
+          <TranslateTransform X="{Binding ElementName=s1, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+        </TransformGroup>
+      </Ellipse.RenderTransform>
+    </Ellipse>
+    
+    <Slider     Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="4" x:Name="s1" Minimum="0" Maximum="100" Value="3" />
+    <TextBlock  Grid.Column="2" Grid.ColumnSpan="6" Grid.Row="5" Text="{Binding ElementName=s1, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10"/>
+      <RowDefinition Height="45"/>
+      <RowDefinition Height="10"/>
+      <RowDefinition Height="45"/>
+      <RowDefinition Height="45"/>
+      <RowDefinition Height="45"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10"/>
+      <ColumnDefinition Width="45"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+  </Grid>
+</UserControl>

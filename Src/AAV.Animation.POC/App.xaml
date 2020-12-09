@@ -1,0 +1,144 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="AAV.Animation.POC.App"
+             xmlns:local="clr-namespace:AAV.Animation.POC"
+             StartupUri="Vws/MainWindow.xaml">
+  <Application.Resources>
+
+    <SineEase    x:Key="si"     EasingMode="EaseIn" />
+    <SineEase    x:Key="so"     EasingMode="EaseOut" />
+    <SineEase    x:Key="sb"     EasingMode="EaseInOut" />
+    <CubicEase   x:Key="co"     EasingMode="EaseOut" />
+    <CubicEase   x:Key="ci"     EasingMode="EaseIn" />
+    <CubicEase   x:Key="cb"     EasingMode="EaseInOut" />
+    <QuarticEase x:Key="qo"     EasingMode="EaseOut" />
+    <QuarticEase x:Key="qi"     EasingMode="EaseIn" />
+    <QuarticEase x:Key="qb"     EasingMode="EaseInOut" />
+    <BackEase    x:Key="ko"     EasingMode="EaseOut" />
+    <BackEase    x:Key="ki"     EasingMode="EaseIn" />
+    <BackEase    x:Key="kb"     EasingMode="EaseInOut" />
+    <ElasticEase x:Key="ei"     EasingMode="EaseIn" />
+    <ElasticEase x:Key="eo"     EasingMode="EaseOut" />
+    <ElasticEase x:Key="eb"     EasingMode="EaseInOut" />
+    <ElasticEase x:Key="eo0s5"  EasingMode="EaseOut" Oscillations="0" Springiness="5" />
+    <ElasticEase x:Key="eo2s5"  EasingMode="EaseOut" Oscillations="2" Springiness="5" />
+    <BounceEase  x:Key="bo"     EasingMode="EaseOut" />
+
+    <Duration x:Key="moveDuration">0:0:0.5</Duration>
+    <Duration x:Key="fadeDuration">0:0:0.2</Duration>
+    <Duration x:Key="fastDuration">0:0:0.1</Duration>
+    <Duration x:Key="superFastDrn">0:0:.01</Duration>
+
+    <Storyboard x:Key="sbSlideShow">
+      <DoubleAnimation          To="8"                                          Duration="{StaticResource moveDuration}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" EasingFunction="{StaticResource bo}" />
+      <DoubleAnimation From="0" To="1" Storyboard.TargetProperty="Opacity"      Duration="{StaticResource fadeDuration}" />
+      <ObjectAnimationUsingKeyFrames   Storyboard.TargetProperty="Visibility"   Duration="{StaticResource superFastDrn}"  >
+        <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
+      </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="sbSlideHide">
+      <DoubleAnimation          To="0"                                          Duration="{StaticResource fastDuration}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" EasingFunction="{StaticResource si}" />
+      <DoubleAnimation From="1" To="0" Storyboard.TargetProperty="Opacity"      Duration="{StaticResource fastDuration}" BeginTime="0:0:.02"/>
+      <ObjectAnimationUsingKeyFrames   Storyboard.TargetProperty="Visibility"   Duration="{StaticResource fastDuration}"  >
+        <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
+      </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style TargetType="FrameworkElement" x:Key="IsCurrent_thenLowStyle">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource sbSlideShow}" />
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource sbSlideHide}" />
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+        <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="False">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource sbSlideHide}" />
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource sbSlideShow}" />
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+
+    <!--https://docs.microsoft.com/en-us/dotnet/framework/wpf/graphics-multimedia/how-to-animate-in-a-style       
+    
+    How to animate in a style
+
+    -->
+    <Style TargetType="{x:Type Button}" x:Key="MyButtonStyle">
+      <Setter Property="Button.Background">
+        <Setter.Value>
+          <SolidColorBrush Color="Orange" />
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+
+        <!-- Animates the button's opacity on mouse over. -->
+        <EventTrigger RoutedEvent="Button.MouseEnter">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                  RepeatBehavior="Forever" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+
+        <!-- Returns the button's opacity to 1 when the mouse leaves. -->
+        <EventTrigger RoutedEvent="Button.MouseLeave">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  To="1" Duration="0:0:0.1" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+
+        <!-- Changes the button's color when clicked. 
+             Notice that the animation can't target the
+             SolidColorBrush used to paint the button's background
+             directly. The brush must be accessed through the button's
+             Background property. -->
+        <EventTrigger RoutedEvent="Button.Click">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="Orange" To="White" Duration="0:0:0.1" AutoReverse="True" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="{x:Type FrameworkElement}" x:Key="SlowShowElmntStyle">
+      <Style.Triggers>
+
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)" From="0.0" To="1" Duration="0:0:5"  />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+
+      </Style.Triggers>
+    </Style>
+
+  </Application.Resources>
+</Application>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArcRotUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             xmlns:ucs="clr-namespace:NEM.View.UserCtrls"
+             d:DesignHeight="100" d:DesignWidth="100">
+  <UserControl.Resources>
+  </UserControl.Resources>
+  <UserControl.Triggers>
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard>
+        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" >
+          <!--<DoubleAnimation Duration="0:0:2" From="-1.5707" To="+1.5707" AutoReverse="True" Storyboard.TargetName="bg1" Storyboard.TargetProperty="StartAngle" />-->
+          <!--<DoubleAnimation Duration="0:0:1" From="+1.5707" To="+7.8535" Storyboard.TargetName="bg1" Storyboard.TargetProperty="EndAngle"   AccelerationRatio=".5" />-->
+
+          <DoubleAnimation Duration="0:0:1" From="0" To="360" Storyboard.TargetName="bg1" 
+                           AccelerationRatio=".03"
+                           DecelerationRatio=".03"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </UserControl.Triggers>
+  <Grid Height="100" Width="100">
+
+    <Ellipse Stroke="#eee" 
+             StrokeThickness="1" Margin="1"/>
+    <ucs:Arc Stroke="#68a" StrokeThickness="1" Radius="48.5" EndAngle="+3.1414" SmallAngle="True" Center="50 50"  x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
+      <ucs:Arc.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform />
+          <TranslateTransform/>
+        </TransformGroup>
+      </ucs:Arc.RenderTransform>
+    </ucs:Arc>
+
+    <Viewbox Margin="5">
+      <TextBlock Text="Boring..."/>
+    </Viewbox>
+  </Grid>
+</UserControl>

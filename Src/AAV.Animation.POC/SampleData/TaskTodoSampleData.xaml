@@ -1,0 +1,6 @@
+﻿<POC:TaskTodoCollection xmlns:POC="clr-namespace:AAV.Animation.POC">
+	<POC:TaskTodo IsCurrent="True" Priority="62" TaskName="Nam vestibulum"/>
+	<POC:TaskTodo IsCurrent="False" Priority="64" TaskName="Class sed curabitur phasellus aenean"/>
+	<POC:TaskTodo IsCurrent="True" Priority="69" TaskName="Mauris adipiscing nullam"/>
+	<POC:TaskTodo IsCurrent="False" Priority="88" TaskName="Aptent cras"/>
+</POC:TaskTodoCollection>
