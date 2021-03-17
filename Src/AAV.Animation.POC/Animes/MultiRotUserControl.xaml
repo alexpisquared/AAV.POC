@@ -1,5 +1,4 @@
 ﻿<UserControl x:Class="AAV.Animation.POC.Animes.MultiRotUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             xmlns:ucs="clr-namespace:NEM.View.UserCtrls"
              d:DesignHeight="100" d:DesignWidth="100">
   <UserControl.Resources>
   </UserControl.Resources>

@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArcRotUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             xmlns:ucs="clr-namespace:NEM.View.UserCtrls"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
              d:DesignHeight="100" d:DesignWidth="100">
   <UserControl.Resources>
   </UserControl.Resources>
@@ -21,18 +21,25 @@
   </UserControl.Triggers>
   <Grid Height="100" Width="100">
 
-    <Ellipse Stroke="#eee" 
-             StrokeThickness="1" Margin="1"/>
-    <ucs:Arc Stroke="#68a" StrokeThickness="1" Radius="48.5" EndAngle="+3.1414" SmallAngle="True" Center="50 50"  x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
-      <ucs:Arc.RenderTransform>
+    <Ellipse Stroke="#eee" StrokeThickness="1" Margin="1"/>
+    
+    <!--
+            Radius="48.5" 
+            SmallAngle="True" 
+            Center="50 50"
+    -->  
+    <ed:Arc Stroke="#68a" StrokeThickness="1" 
+            EndAngle="+3.1414" 
+            x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
+      <ed:Arc.RenderTransform>
         <TransformGroup>
           <ScaleTransform/>
           <SkewTransform/>
           <RotateTransform />
           <TranslateTransform/>
         </TransformGroup>
-      </ucs:Arc.RenderTransform>
-    </ucs:Arc>
+      </ed:Arc.RenderTransform>
+    </ed:Arc>
 
     <Viewbox Margin="5">
       <TextBlock Text="Boring..."/>
