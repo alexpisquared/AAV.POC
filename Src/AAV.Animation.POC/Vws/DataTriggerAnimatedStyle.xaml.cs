@@ -25,6 +25,13 @@ namespace AAV.Animation.POC.Vws
 
     public static readonly DependencyProperty IsCurrentProperty = DependencyProperty.Register("IsCurrent", typeof(bool), typeof(DataTriggerAnimatedStyle), new PropertyMetadata(true)); public bool IsCurrent { get { return (bool)GetValue(IsCurrentProperty); } set { SetValue(IsCurrentProperty, value); } }
 
+    void onChange(object s, RoutedEventArgs e)
+    {
+      foreach (var item in ((Cities.Models.SampleListItem[])dg2.ItemsSource))
+      {
+        item.Name = item.Name == "Mauris" ? "Abc123" : "Mauris";
+      }
+    }
     void Button_Click(object sender, RoutedEventArgs e) { Close(); }
   }
 }
