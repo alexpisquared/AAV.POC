@@ -31,6 +31,8 @@ namespace AAV.Animation.POC.Vws
       {
         item.Name = item.Name == "Mauris" ? "Abc123" : "Mauris";
       }
+
+      new MainWindow().Show();
     }
     void Button_Click(object sender, RoutedEventArgs e) { Close(); }
   }
