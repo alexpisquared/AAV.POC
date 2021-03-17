@@ -1,5 +1,6 @@
 ﻿<Window x:Class="AAV.Animation.POC.Vws.DataTriggerAnimatedStyle" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        mc:Ignorable="d"
-        xmlns:local="ColorFlashing-namespace:AAV.Animation.POC.Vws" Title="DataTriggerAnimatedStyle" Height="120" Width="500">
+        xmlns:models="clr-namespace:Cities.Models" 
+        Title="DataTriggerAnimatedStyle" Height="520" Width="500">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="Auto" />
@@ -7,6 +8,10 @@
       <ColumnDefinition Width="2*" />
       <ColumnDefinition Width="1*" />
     </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition />
+    </Grid.RowDefinitions>
     <Grid.Resources>
 
       <Storyboard x:Key="ColorFlashing">
@@ -70,6 +75,13 @@
           </DataTrigger>
         </Style.Triggers>
       </Style>
+
+      <DataTemplate x:Key="LookTemplate">
+        <StackPanel>
+          <Image Source="{Binding Look}" HorizontalAlignment="Left" Height="24" Width="24"/>
+        </StackPanel>
+      </DataTemplate>
+
     </Grid.Resources>
 
     <Button IsCancel="True" Click="Button_Click" Opacity="1" HorizontalAlignment="Right" VerticalAlignment="Top" />
@@ -86,6 +98,47 @@
       <Button    Style="{StaticResource trigBtn}">Click Me</Button>
       <TextBlock Style="{StaticResource trigTbk}" Background="#888">Click Me</TextBlock>
     </StackPanel>
+
+    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" Margin="4" AutoGenerateColumns="False" x:Name="dg2">
+      <DataGrid.Columns>
+        <DataGridTextColumn     Binding="{Binding ID}" Header="ID"/>
+        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done"/>
+        <DataGridTextColumn     Binding="{Binding Name}" Header="Name"/>
+
+        <DataGridTemplateColumn Header="Name 2" Width="2*" >
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Name}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+          <DataGridTemplateColumn.CellStyle>
+            <Style TargetType="{x:Type DataGridCell}">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Name}" Value="Mauris">
+                  <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource ColorFlashing}"/>
+                  </DataTrigger.EnterActions>
+                  <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+                  </DataTrigger.ExitActions>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </DataGridTemplateColumn.CellStyle>
+        </DataGridTemplateColumn>
+
+        <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"/>
+      </DataGrid.Columns>
+      <DataGrid.ItemsSource>
+        <x:Array Type="{x:Type models:SampleListItem}">
+          <models:SampleListItem ID="75" Name="Maecenas aliquam " Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image01.png" Done="True"/>
+          <models:SampleListItem ID="71" Name="Aenean class cras" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image02.png" Done="False"/>
+          <models:SampleListItem ID="56" Name="Mauris"            Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image03.png" Done="True"/>
+          <models:SampleListItem ID="77" Name="Accumsan duis"     Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image04.png" Done="False"/>
+        </x:Array>
+      </DataGrid.ItemsSource>
+    </DataGrid>
+
 
   </Grid>
 </Window>
