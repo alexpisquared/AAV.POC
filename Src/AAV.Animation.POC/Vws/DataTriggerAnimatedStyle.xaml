@@ -9,7 +9,7 @@
         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Red" To="Yellow" Duration="0:0:.333" AutoReverse="True" RepeatBehavior="Forever" />
       </Storyboard>
       <Storyboard x:Key="ColorFlashingSlow">
-        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Red" To="Yellow" Duration="0:0:.999" AutoReverse="True" RepeatBehavior="Forever" />
+        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Cyan" To="Blue" Duration="0:0:.999" AutoReverse="True" RepeatBehavior="Forever" />
       </Storyboard>
       <Storyboard x:Key="ColorRestored"     FillBehavior="Stop">
         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="Green" Duration="0:0:1" />
@@ -122,41 +122,17 @@
       <TextBlock Style="{StaticResource trigTbk}" Background="#888"  Text="TxtBlock" />
     </StackPanel>
 
-    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}" >
+    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}" 
+              VerticalGridLinesBrush="Transparent"
+              HorizontalGridLinesBrush="Transparent"
+              >
       <DataGrid.Columns>
         <DataGridTextColumn     Binding="{Binding ID}" Header="ID"/>
-        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done"/>
-        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}"/>
+        <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"  />
+        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" Width="1*"  />
+        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="2*"  />
+        <!--<DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="*"  CellStyle="{StaticResource AnimOpacityDataGridCellStyle}"/>-->
 
-        <DataGridTemplateColumn Header="Name" >
-          <DataGridTemplateColumn.CellTemplate>
-            <DataTemplate>
-              <TextBlock Text="{Binding Name}" />
-            </DataTemplate>
-          </DataGridTemplateColumn.CellTemplate>
-          <DataGridTemplateColumn.CellStyle>
-            <Style TargetType="{x:Type DataGridCell}">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Name}" Value="Mauris">
-                  <Setter Property="Background"       Value="#40f0" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Name}" Value="Abc123">
-                  <Setter Property="Background"       Value="#4f00" />
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </DataGridTemplateColumn.CellStyle>
-        </DataGridTemplateColumn>
-
-        <DataGridTemplateColumn Header="Name 2" Width="2*" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" >
-          <DataGridTemplateColumn.CellTemplate>
-            <DataTemplate>
-              <TextBlock Text="{Binding Name}" />
-            </DataTemplate>
-          </DataGridTemplateColumn.CellTemplate>
-        </DataGridTemplateColumn>
-
-        <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"  CellStyle="{StaticResource AnimOpacityDataGridCellStyle}"/>
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">
@@ -169,7 +145,7 @@
     </DataGrid>
 
 
-    <local:DataTriggerAnimatedStyleUserControl Grid.ColumnSpan="4" Grid.Row="2" />
+    <!--<local:DataTriggerAnimatedStyleUserControl Grid.ColumnSpan="4" Grid.Row="2" />-->
 
 
   </Grid>
