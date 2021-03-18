@@ -122,9 +122,9 @@
       <TextBlock Style="{StaticResource trigTbk}" Background="#888"  Text="TxtBlock" />
     </StackPanel>
 
-    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}" 
-              VerticalGridLinesBrush="Transparent"
-              HorizontalGridLinesBrush="Transparent"
+    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" 
+              ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}" 
+              VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
               >
       <DataGrid.Columns>
         <DataGridTextColumn     Binding="{Binding ID}" Header="ID"/>
@@ -132,7 +132,6 @@
         <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" Width="1*"  />
         <DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="2*"  />
         <!--<DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="*"  CellStyle="{StaticResource AnimOpacityDataGridCellStyle}"/>-->
-
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">
@@ -144,9 +143,7 @@
       </DataGrid.ItemsSource>
     </DataGrid>
 
-
-    <!--<local:DataTriggerAnimatedStyleUserControl Grid.ColumnSpan="4" Grid.Row="2" />-->
-
+    <local:DataTriggerAnimatedStyleUserControl Grid.ColumnSpan="4" Grid.Row="2" />
 
   </Grid>
 </Window>
