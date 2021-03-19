@@ -25,26 +25,22 @@
     <CheckBox   Content="Is _Selected" IsChecked="{Binding IsCurrent}" VerticalAlignment="Center" />
 
     <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="20 0">
-      <TextBlock  Text="{Binding IsCurrent}" d:Text="True/False"  Style="{StaticResource FlashingTextBlockIfTrue}"/>
+      <TextBlock  Text="{Binding IsCurrent}" d:Text="True/False"  />
       <TextBlock  Text="{Binding IsCurrent}" d:Text="True/False"  />
       <TextBlock  Text="{Binding IsCurrent}" d:Text="True/False"  />
     </StackPanel>
 
     <StackPanel Grid.Column="3" VerticalAlignment="Center" Margin="20 0">
-      <Button    Style="{StaticResource trigBtn}" Click="onChange" Content="_Change"/>
-      <TextBlock Style="{StaticResource trigTbk}" Background="#888"  Text="TxtBlock" />
+      <Button    Click="onChange" Content="_Change"/>
+      <TextBlock Background="#888"  Text="TxtBlock" />
     </StackPanel>
 
-    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" 
-              ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}" 
-              VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
-              >
+    <DataGrid Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" x:Name="dg2" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" >
       <DataGrid.Columns>
         <DataGridTextColumn     Binding="{Binding ID}" Header="ID"/>
         <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"  />
         <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" Width="1*"  />
         <DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="2*"  />
-        <!--<DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="*"  CellStyle="{StaticResource AnimOpacityDataGridCellStyle}"/>-->
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">

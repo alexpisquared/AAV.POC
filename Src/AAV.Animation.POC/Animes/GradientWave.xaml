@@ -13,13 +13,6 @@
       <ColumnDefinition Width="10*" />
     </Grid.ColumnDefinitions>
 
-    <Rectangle  Fill="{StaticResource awesomeFill}" >
-      <Rectangle.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-          <BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/>
-        </EventTrigger>
-      </Rectangle.Triggers>
-    </Rectangle>
     <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="1" >
       <Grid.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -28,13 +21,6 @@
       </Grid.Triggers>
     </Grid>
 
-    <Rectangle  Fill="{StaticResource awesomeFill}" Grid.Column="2" >
-      <Rectangle.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
-          <BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/>
-        </EventTrigger>
-      </Rectangle.Triggers>
-    </Rectangle>
     <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="3" >
       <Grid.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
@@ -42,8 +28,6 @@
         </EventTrigger>
       </Grid.Triggers>
     </Grid>
-
-    <Grid Style="{StaticResource awesomeGridStyle}" Grid.Column="4" />
 
     <!--
     <Rectangle Fill="Green" Grid.Column="5">
@@ -55,21 +39,11 @@
     </Rectangle>
     -->
 
-    <DataGrid Grid.Column="6" AutoGenerateColumns="False" x:Name="dg2"        ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}"               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
-              >
+    <DataGrid Grid.Column="6" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" >
       <DataGrid.Columns>
-        <DataGridTextColumn     Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
-        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" CellStyle="{StaticResource awesomeControlStyle}"/>
-        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" />
-        <DataGridTemplateColumn Width="80">
-          <DataGridTemplateColumn.CellTemplate>
-            <DataTemplate>
-              <Grid Style="{StaticResource awesomeGridStyle}" >
-                <TextBox Text="{Binding Name}" Style="{StaticResource awesomeControlStyle}" Width="40" HorizontalAlignment="Left"/>
-              </Grid>
-            </DataTemplate>
-          </DataGridTemplateColumn.CellTemplate>
-        </DataGridTemplateColumn>
+        <DataGridTextColumn     Width="*" Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
+        <DataGridCheckBoxColumn Width="*" Binding="{Binding Done}" Header="Done" />
+        <DataGridTextColumn     Width="*" Binding="{Binding Name}" Header="Name" />
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">
