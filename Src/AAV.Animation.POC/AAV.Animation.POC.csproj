@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- //tu: blend/arc problem fix -->
+    <!-- //tu: blend/arc problem fix 
     <PackageReference Include="Unnoficial.Microsoft.Expression.Drawing" Version="1.0.0" />
+    -->
   </ItemGroup>
 
 </Project>

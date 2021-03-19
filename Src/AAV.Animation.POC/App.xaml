@@ -172,13 +172,17 @@
       <ColorAnimation  Storyboard.TargetProperty="(Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)"  From="#08f" To="#0f8" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
     </Storyboard>
     <LinearGradientBrush x:Key="awesomeBkGr" EndPoint="1,1.2" StartPoint="0,-.1">
-      <GradientStop Color="#0f0" Offset="0.5"/>
-      <GradientStop Color="#22a" Offset="0.0"/>
-      <GradientStop Color="#22a" Offset="1.0"/>
+      <GradientStop Color="#0000" Offset="0.5"/>
+      <GradientStop Color="#0000" Offset="0.0"/>
+      <GradientStop Color="#0000" Offset="1.0"/>
     </LinearGradientBrush>
     <Storyboard x:Key="awesomeBkGrStoryboard" RepeatBehavior="Forever" AutoReverse="True">
       <DoubleAnimation Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" From="0.01" To="0.99" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
       <ColorAnimation  Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)"  From="#08f" To="#0f8" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
+    </Storyboard>
+    <Storyboard x:Key="awesomeBkGrStoryboardStop" FillBehavior="Stop">
+      <DoubleAnimation Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)"             To="0.50"  Duration="0:0:2" EasingFunction="{StaticResource sb}" />
+      <ColorAnimation  Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)"              To="#0888" Duration="0:0:2" EasingFunction="{StaticResource sb}" />
     </Storyboard>
     <!--<Style TargetType="Rectangle" x:Key="awesomeRect_NOGO"><Setter Property="Fill" Value="{StaticResource awesomeFill}" /><Style.Triggers><EventTrigger RoutedEvent="FrameworkElement.Loaded"><BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/></EventTrigger></Style.Triggers></Style>-->
 
@@ -217,15 +221,12 @@
     <Style x:Key="awesomeDataGridCellStyle" TargetType="{x:Type DataGridCell}">
       <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
       <Style.Triggers>
-        <!--<EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
-          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
-        </EventTrigger>-->
         <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
           <DataTrigger.EnterActions>
-            <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
+            <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
           </DataTrigger.EnterActions>
           <DataTrigger.ExitActions>
-            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+            <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardStop}"/>
           </DataTrigger.ExitActions>
         </DataTrigger>
       </Style.Triggers>

@@ -9,9 +9,6 @@ namespace AAV.Animation.POC.Animes
 
     //void onChange(object s, RoutedEventArgs e) { foreach (var r in ((Cities.Models.SampleListItem[])dg2.ItemsSource)) r.Name = r.Name == "Mauris" ? "Abc123" : "Mauris"; }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
+    private void Button_Click(object sender, RoutedEventArgs e)    { foreach (var r in ((Cities.Models.SampleListItem[])dg2.ItemsSource)) r.Name = r.Name == "Mauris" ? "Abc123" : "Mauris"; }
   }
 }

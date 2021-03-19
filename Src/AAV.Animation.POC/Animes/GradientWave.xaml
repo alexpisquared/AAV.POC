@@ -60,7 +60,7 @@
       <DataGrid.Columns>
         <DataGridTextColumn     Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
         <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" CellStyle="{StaticResource awesomeControlStyle}"/>
-        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" Width="*"      />
+        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" />
         <DataGridTemplateColumn Width="80">
           <DataGridTemplateColumn.CellTemplate>
             <DataTemplate>
