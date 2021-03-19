@@ -56,21 +56,16 @@
     -->
 
     <DataGrid Grid.Column="6" AutoGenerateColumns="False" x:Name="dg2"        ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}"               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
-              Background="{StaticResource awesomeBkGr}" >
-      <DataGrid.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
-        </EventTrigger>
-      </DataGrid.Triggers>
+              >
       <DataGrid.Columns>
-        <DataGridTextColumn     Binding="{Binding ID}"   Header="ID" />
-        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" />
-        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="2*"      CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" />
-        <DataGridTemplateColumn >
+        <DataGridTextColumn     Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
+        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" CellStyle="{StaticResource awesomeControlStyle}"/>
+        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" Width="*"      />
+        <DataGridTemplateColumn Width="80">
           <DataGridTemplateColumn.CellTemplate>
             <DataTemplate>
-              <Grid >
-                <TextBox Text="{Binding Name}" Style="{StaticResource awesomeControlStyle}" />
+              <Grid Style="{StaticResource awesomeGridStyle}" >
+                <TextBox Text="{Binding Name}" Style="{StaticResource awesomeControlStyle}" Width="40" HorizontalAlignment="Left"/>
               </Grid>
             </DataTemplate>
           </DataGridTemplateColumn.CellTemplate>
@@ -85,7 +80,7 @@
       </DataGrid.ItemsSource>
     </DataGrid>
 
-    <Button Click="onChange" Content="_Change" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+    <Button Click="Button_Click" Content="_Change" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
 
   </Grid>
 </UserControl>

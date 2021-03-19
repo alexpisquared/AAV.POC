@@ -201,9 +201,25 @@
     <Style x:Key="awesomeControlStyle" TargetType="{x:Type Control}">
       <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
       <Style.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+        <!--<EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
           <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
-        </EventTrigger>
+        </EventTrigger>-->
+        <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="awesomeDataGridCellStyle" TargetType="{x:Type DataGridCell}">
+      <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
+      <Style.Triggers>
+        <!--<EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>-->
         <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
           <DataTrigger.EnterActions>
             <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
@@ -275,8 +291,8 @@
       </Style.Triggers>
     </Style>
     <Style x:Key="AnimOpacityDataGridCellStyle" TargetType="{x:Type DataGridCell}">
-      <Setter Property="Background" Value="#f0f" />
-      <!--<Setter Property="Background" Value="{StaticResource awesomeBkGr}" />-->
+      <!--<Setter Property="Background" Value="#f0f" />-->
+      <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
       <Style.Triggers>
         <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
           <DataTrigger.EnterActions>
