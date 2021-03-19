@@ -5,93 +5,6 @@
   <Grid>
     <Grid.Resources>
 
-      <Storyboard x:Key="ColorFlashingFast">
-        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Red" To="Yellow" Duration="0:0:.333" AutoReverse="True" RepeatBehavior="Forever" />
-      </Storyboard>
-      <Storyboard x:Key="ColorFlashingSlow">
-        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Cyan" To="Blue" Duration="0:0:.999" AutoReverse="True" RepeatBehavior="Forever" />
-      </Storyboard>
-      <Storyboard x:Key="ColorRestored"     FillBehavior="Stop">
-        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="Green" Duration="0:0:1" />
-      </Storyboard>
-      <Storyboard x:Key="OpacityFlashing">
-        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To="1"   Duration="0:0:.3" RepeatBehavior="Forever" AutoReverse="True"/>
-      </Storyboard>
-      <Storyboard x:Key="OpacityRestored"   FillBehavior="Stop">
-        <DoubleAnimation To="1" Storyboard.TargetProperty="Opacity"      Duration="0:0:2"/>
-      </Storyboard>
-      
-      <Style TargetType="{x:Type TextBlock}" x:Key="FlashingTextBlockIfTrue">
-        <Style.Triggers>
-          <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
-            <DataTrigger.EnterActions>
-              <BeginStoryboard Storyboard="{StaticResource OpacityFlashing}" />
-            </DataTrigger.EnterActions>
-            <DataTrigger.ExitActions>
-              <BeginStoryboard Storyboard="{StaticResource OpacityRestored}" />
-            </DataTrigger.ExitActions>
-          </DataTrigger>
-        </Style.Triggers>
-      </Style>
-
-      <Style TargetType="{x:Type Button}" x:Key="trigBtn">
-        <Setter Property="Background" Value="Yellow"/>
-        <Style.Triggers>
-          <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
-            <DataTrigger.EnterActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
-            </DataTrigger.EnterActions>
-            <DataTrigger.ExitActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
-            </DataTrigger.ExitActions>
-          </DataTrigger>
-        </Style.Triggers>
-      </Style>
-
-      <Style TargetType="{x:Type TextBlock}" x:Key="trigTbk">
-        <Setter Property="Background" Value="Yellow"/>
-        <Style.Triggers>
-          <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
-            <DataTrigger.EnterActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
-            </DataTrigger.EnterActions>
-            <DataTrigger.ExitActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
-            </DataTrigger.ExitActions>
-          </DataTrigger>
-        </Style.Triggers>
-      </Style>
-
-      <DataTemplate x:Key="LookTemplate">
-        <StackPanel>
-          <Image Source="{Binding Look}" HorizontalAlignment="Left" Height="24" Width="24"/>
-        </StackPanel>
-      </DataTemplate>
-
-      <Style x:Key="AnimOpacityDataGridRowStyle" TargetType="{x:Type DataGridRow}">
-        <Style.Triggers>
-          <DataTrigger Binding="{Binding Path=Name}" Value="Abc123">
-            <DataTrigger.EnterActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
-            </DataTrigger.EnterActions>
-            <DataTrigger.ExitActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
-            </DataTrigger.ExitActions>
-          </DataTrigger>
-        </Style.Triggers>
-      </Style>
-      <Style x:Key="AnimOpacityDataGridCellStyle" TargetType="{x:Type DataGridCell}">
-        <Style.Triggers>
-          <DataTrigger Binding="{Binding Path=Name}" Value="Abc123">
-            <DataTrigger.EnterActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
-            </DataTrigger.EnterActions>
-            <DataTrigger.ExitActions>
-              <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
-            </DataTrigger.ExitActions>
-          </DataTrigger>
-        </Style.Triggers>
-      </Style>
 
     </Grid.Resources>
 
@@ -107,7 +20,7 @@
       <RowDefinition />
     </Grid.RowDefinitions>
 
-    <Button IsCancel="True" Click="Button_Click" Opacity="1" HorizontalAlignment="Right" VerticalAlignment="Top" />
+    <Button IsCancel="True" Click="onClose" Opacity="1" HorizontalAlignment="Right" VerticalAlignment="Top" />
 
     <CheckBox   Content="Is _Selected" IsChecked="{Binding IsCurrent}" VerticalAlignment="Center" />
 

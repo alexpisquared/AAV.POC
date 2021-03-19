@@ -1,6 +1,6 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="AAV.Animation.POC.App"
              xmlns:local="clr-namespace:AAV.Animation.POC"
-             StartupUri="Vws/DataTriggerAnimatedStyle.xaml">
+             StartupUri="Vws/Window1.xaml">
   <Application.Resources>
 
     <SineEase    x:Key="si"     EasingMode="EaseIn" />
@@ -140,5 +140,153 @@
       </Style.Triggers>
     </Style>
 
+
+
+    <Storyboard x:Key="ColorFlashingFast">
+      <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Red" To="Yellow" Duration="0:0:.333" AutoReverse="True" RepeatBehavior="Forever" />
+    </Storyboard>
+    <Storyboard x:Key="ColorFlashingSlow">
+      <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Cyan" To="Blue" Duration="0:0:.999" AutoReverse="True" RepeatBehavior="Forever" />
+    </Storyboard>
+    <Storyboard x:Key="ColorRestored"     FillBehavior="Stop">
+      <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="Green" Duration="0:0:1" />
+    </Storyboard>
+    <Storyboard x:Key="OpacityFlashing">
+      <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To="1"   Duration="0:0:.3" RepeatBehavior="Forever" AutoReverse="True"/>
+    </Storyboard>
+    <Storyboard x:Key="OpacityRestored"   FillBehavior="Stop">
+      <DoubleAnimation To="1" Storyboard.TargetProperty="Opacity"      Duration="0:0:2"/>
+    </Storyboard>
+
+    <Storyboard x:Key="ColorFlashingFBC" AutoReverse="True" RepeatBehavior="Forever" >
+      <ColorAnimation Storyboard.TargetProperty="(Fill).(SolidColorBrush.Color)" From="Red" To="Yellow" Duration="0:0:3.33"/>
+    </Storyboard>
+
+    <LinearGradientBrush x:Key="awesomeFill" EndPoint="1,1.2" StartPoint="0,-.1">
+      <GradientStop Color="#0f0" Offset="0.5"/>
+      <GradientStop Color="#800" Offset="0.0"/>
+      <GradientStop Color="#800" Offset="1.0"/>
+    </LinearGradientBrush>
+    <Storyboard x:Key="awesomeFillStoryboard" RepeatBehavior="Forever" AutoReverse="True">
+      <DoubleAnimation Storyboard.TargetProperty="(Fill).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" From="0.01" To="0.99" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
+      <ColorAnimation  Storyboard.TargetProperty="(Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)"  From="#08f" To="#0f8" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
+    </Storyboard>
+    <LinearGradientBrush x:Key="awesomeBkGr" EndPoint="1,1.2" StartPoint="0,-.1">
+      <GradientStop Color="#0f0" Offset="0.5"/>
+      <GradientStop Color="#22a" Offset="0.0"/>
+      <GradientStop Color="#22a" Offset="1.0"/>
+    </LinearGradientBrush>
+    <Storyboard x:Key="awesomeBkGrStoryboard" RepeatBehavior="Forever" AutoReverse="True">
+      <DoubleAnimation Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" From="0.01" To="0.99" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
+      <ColorAnimation  Storyboard.TargetProperty="(Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)"  From="#08f" To="#0f8" Duration="0:0:.5" EasingFunction="{StaticResource sb}" />
+    </Storyboard>
+    <!--<Style TargetType="Rectangle" x:Key="awesomeRect_NOGO"><Setter Property="Fill" Value="{StaticResource awesomeFill}" /><Style.Triggers><EventTrigger RoutedEvent="FrameworkElement.Loaded"><BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/></EventTrigger></Style.Triggers></Style>-->
+
+    <Style x:Key="awesomeGridStyle" TargetType="{x:Type Grid}">
+      <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
+      <Style.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>
+        <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="awesomeControlStyle" TargetType="{x:Type Control}">
+      <Setter Property="Background" Value="{StaticResource awesomeBkGr}" />
+      <Style.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>
+        <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="FlashingTextBlockIfTrue">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource OpacityFlashing}" />
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource OpacityRestored}" />
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="trigBtn">
+      <Setter Property="Background" Value="Yellow"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="trigTbk">
+      <Setter Property="Background" Value="Yellow"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsCurrent, UpdateSourceTrigger=PropertyChanged}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="LookTemplate">
+      <StackPanel>
+        <Image Source="{Binding Look}" HorizontalAlignment="Left" Height="24" Width="24"/>
+      </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="AnimOpacityDataGridRowStyle" TargetType="{x:Type DataGridRow}">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=Name}" Value="Abc123">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingSlow}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="AnimOpacityDataGridCellStyle" TargetType="{x:Type DataGridCell}">
+      <Setter Property="Background" Value="#f0f" />
+      <!--<Setter Property="Background" Value="{StaticResource awesomeBkGr}" />-->
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=Name}" Value="Mauris">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorFlashingFast}"/>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard Storyboard="{StaticResource ColorRestored}"/>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
   </Application.Resources>
 </Application>

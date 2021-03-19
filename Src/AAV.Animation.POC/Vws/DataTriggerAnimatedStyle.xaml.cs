@@ -15,7 +15,7 @@ namespace AAV.Animation.POC.Vws
 
     void onChange(object s, RoutedEventArgs e) { foreach (var r in ((Cities.Models.SampleListItem[])dg2.ItemsSource)) r.Name = r.Name == "Mauris" ? "Abc123" : "Mauris"; }
     void onShowMainWindow(object s, RoutedEventArgs e) => new MainWindow().Show();
-    void Button_Click(object sender, RoutedEventArgs e) => Close();
+    void onClose(object s, RoutedEventArgs e) => Close();
   }
 }
 

@@ -1,30 +1,91 @@
-﻿<UserControl x:Class="AAV.Animation.POC.Animes.GradientWave" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             xmlns:local="clr-namespace:AAV.Animation.POC.Animes" d:DesignHeight="20" d:DesignWidth="420">
-  <Rectangle Stroke="#888" StrokeThickness="1">
-    <Rectangle.Fill>
-      <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop x:Name="GradientStop1a" Color="#222" Offset="0.0" />
-        <GradientStop x:Name="GradientStop2a" Color="#ddd" Offset="0.5" />
-        <GradientStop x:Name="GradientStop3"  Color="#222" Offset="1.0" />
-      </LinearGradientBrush>
-    </Rectangle.Fill>
-    <Rectangle.Triggers>
-      <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-        <BeginStoryboard>
-          <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-            <DoubleAnimation Storyboard.TargetName="GradientStop2a" Storyboard.TargetProperty="Offset" From="0.01"   To="0.99"   Duration="0:0:1.0" EasingFunction="{StaticResource sb}" />
-            <!--
-            <ColorAnimation  Storyboard.TargetName="GradientStop2a" Storyboard.TargetProperty="Color"  From="Purple" To="Yellow" Duration="0:0:1.0" BeginTime="0:0:0.5"/>
-                <DoubleAnimation Storyboard.TargetName="GradientStop1a" Storyboard.TargetProperty="Offset" From="-1"  To="0.10" Duration="0:0:1.5" />
-                <DoubleAnimation Storyboard.TargetName="GradientStop2b" Storyboard.TargetProperty="Offset" From="0.1" To="1.00" Duration="0:0:1.5" />
-                <ColorAnimation  Storyboard.TargetName="GradientStop3" Storyboard.TargetProperty="Color" Duration="0:0:1.5" AutoReverse="True" BeginTime="0:0:6">
-                  <ColorAnimation.By>
-                    <Color ScA="-1" ScR="0" ScB="0" ScG="0" />
-                  </ColorAnimation.By>
-                </ColorAnimation>-->
-          </Storyboard>
-        </BeginStoryboard>
-      </EventTrigger>
-    </Rectangle.Triggers>
-  </Rectangle>
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.GradientWave" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"         
+             xmlns:models="clr-namespace:Cities.Models" d:DesignHeight="200" d:DesignWidth="420">
+  <UserControl.Resources>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="10*" />
+    </Grid.ColumnDefinitions>
+
+    <Rectangle  Fill="{StaticResource awesomeFill}" >
+      <Rectangle.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/>
+        </EventTrigger>
+      </Rectangle.Triggers>
+    </Rectangle>
+    <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="1" >
+      <Grid.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>
+      </Grid.Triggers>
+    </Grid>
+
+    <Rectangle  Fill="{StaticResource awesomeFill}" Grid.Column="2" >
+      <Rectangle.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+          <BeginStoryboard Storyboard="{StaticResource awesomeFillStoryboard}"/>
+        </EventTrigger>
+      </Rectangle.Triggers>
+    </Rectangle>
+    <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="3" >
+      <Grid.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>
+      </Grid.Triggers>
+    </Grid>
+
+    <Grid Style="{StaticResource awesomeGridStyle}" Grid.Column="4" />
+
+    <!--
+    <Rectangle Fill="Green" Grid.Column="5">
+      <Rectangle.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <BeginStoryboard Storyboard="{StaticResource ColorFlashingFBC}"/>
+        </EventTrigger>
+      </Rectangle.Triggers>
+    </Rectangle>
+    -->
+
+    <DataGrid Grid.Column="6" AutoGenerateColumns="False" x:Name="dg2"        ItemContainerStyle="{StaticResource AnimOpacityDataGridRowStyle}"               VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
+              Background="{StaticResource awesomeBkGr}" >
+      <DataGrid.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
+        </EventTrigger>
+      </DataGrid.Triggers>
+      <DataGrid.Columns>
+        <DataGridTextColumn     Binding="{Binding ID}"   Header="ID" />
+        <DataGridCheckBoxColumn Binding="{Binding Done}" Header="Done" />
+        <DataGridTextColumn     Binding="{Binding Name}" Header="Name" Width="2*"      CellStyle="{StaticResource AnimOpacityDataGridCellStyle}" />
+        <DataGridTemplateColumn >
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid >
+                <TextBox Text="{Binding Name}" Style="{StaticResource awesomeControlStyle}" />
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+      <DataGrid.ItemsSource>
+        <x:Array Type="{x:Type models:SampleListItem}">
+          <models:SampleListItem ID="77" Name="Abc123" Done="False" />
+          <models:SampleListItem ID="71" Name="Aen an" Done="False" />
+          <models:SampleListItem ID="56" Name="Mauris" Done="True"  />
+        </x:Array>
+      </DataGrid.ItemsSource>
+    </DataGrid>
+
+    <Button Click="onChange" Content="_Change" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+
+  </Grid>
 </UserControl>

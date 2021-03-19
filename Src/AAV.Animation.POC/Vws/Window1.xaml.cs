@@ -23,5 +23,6 @@ namespace AAV.Animation.POC.Vws
         {
             InitializeComponent();
         }
-    }
+    void onClose(object s, RoutedEventArgs e) => Close();
+  }
 }
