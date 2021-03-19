@@ -10,19 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AAV.Animation.POC.Vws
 {
-  /// <summary>
-  /// Interaction logic for DataTriggerAnimatedStyleUserControl.xaml
-  /// </summary>
-  public partial class DataTriggerAnimatedStyleUserControl : UserControl
-  {
-    public DataTriggerAnimatedStyleUserControl()
+    public partial class AwesomeDataGrid : Window
     {
-      InitializeComponent();
-    }
+        public AwesomeDataGrid()
+        {
+            InitializeComponent();
+        }
+    void onClose(object s, RoutedEventArgs e) => Close();
   }
 }
