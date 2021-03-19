@@ -1,14 +1,15 @@
 ﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        xmlns:Animes="clr-namespace:AAV.Animation.POC.Animes" x:Class="AAV.Animation.POC.Vws.Window1" Title="Window1" Height="150" Width="800" Background="#888">
+        xmlns:Animes="clr-namespace:AAV.Animation.POC.Animes" x:Class="AAV.Animation.POC.Vws.Window1" Title="Window1" Height="250" Width="800" Background="#888">
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition />
-      <RowDefinition />
-      <RowDefinition />
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Animes:GradientWave HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Grid.Row="1"/>
+    <Animes:GradientWave Margin="0" Grid.Row="1"/>
+    <Animes:GradientWave Margin="0" Grid.Row="2"/>
 
   </Grid>
 </Window>
