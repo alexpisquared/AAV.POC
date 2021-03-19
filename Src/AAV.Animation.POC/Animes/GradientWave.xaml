@@ -1,55 +1,25 @@
 ﻿<UserControl x:Class="AAV.Animation.POC.Animes.GradientWave" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"         
-             xmlns:models="clr-namespace:Cities.Models" d:DesignHeight="200" d:DesignWidth="420">
+             xmlns:models="clr-namespace:AAV.Animation.POC.Model" d:DesignHeight="200" d:DesignWidth="420">
   <UserControl.Resources>
   </UserControl.Resources>
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="1*" />
-      <ColumnDefinition Width="10*" />
     </Grid.ColumnDefinitions>
 
-    <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="1" >
-      <Grid.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
-        </EventTrigger>
-      </Grid.Triggers>
-    </Grid>
 
-    <Grid Background="{StaticResource awesomeBkGr}" Grid.Column="3" >
-      <Grid.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
-          <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboard}"/>
-        </EventTrigger>
-      </Grid.Triggers>
-    </Grid>
-
-    <!--
-    <Rectangle Fill="Green" Grid.Column="5">
-      <Rectangle.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-          <BeginStoryboard Storyboard="{StaticResource ColorFlashingFBC}"/>
-        </EventTrigger>
-      </Rectangle.Triggers>
-    </Rectangle>
-    -->
-
-    <DataGrid Grid.Column="6" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" >
+    <DataGrid Grid.Column="0" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" >
       <DataGrid.Columns>
         <DataGridTextColumn     Width="*" Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
         <DataGridCheckBoxColumn Width="*" Binding="{Binding Done}" Header="Done" />
         <DataGridTextColumn     Width="*" Binding="{Binding Name}" Header="Name" />
+        <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"  />
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">
-          <models:SampleListItem ID="77" Name="Abc123" Done="False" />
-          <models:SampleListItem ID="71" Name="Aen an" Done="False" />
-          <models:SampleListItem ID="56" Name="Mauris" Done="True"  />
+          <models:SampleListItem ID="77" Name="Abc123" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image04.png" Done="False"/>
+          <models:SampleListItem ID="71" Name="Aen an" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image02.png" Done="False"/>
+          <models:SampleListItem ID="56" Name="Mauris" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image03.png" Done="True"/>
         </x:Array>
       </DataGrid.ItemsSource>
     </DataGrid>
