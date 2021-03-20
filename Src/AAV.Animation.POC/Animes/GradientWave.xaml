@@ -4,20 +4,62 @@
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Animes/DataGrid.Anime.xaml" />
+        <ResourceDictionary Source="/AsLink/DataGrid.Anime.xaml" />
       </ResourceDictionary.MergedDictionaries>
 
       <system:Double x:Key="blur">0</system:Double>
+
+      <Style x:Key="awesomeStyleRadlDiag" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{StaticResource awesomeBkGrRadl}" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding Path=IsStatusOutstandingAndNoUser}" Value="True">
+            <DataTrigger.EnterActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardRadl}"/>
+            </DataTrigger.EnterActions>
+            <DataTrigger.ExitActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardStop}"/>
+            </DataTrigger.ExitActions>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="awesomeDataGridCellStyle" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{StaticResource awesomeBkGrDiag}" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding Path=IsStatusOutstandingAndNoUser}" Value="True">
+            <DataTrigger.EnterActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardDiag}"/>
+            </DataTrigger.EnterActions>
+            <DataTrigger.ExitActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardStop}"/>
+            </DataTrigger.ExitActions>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="awesomeDataGridRowStyle" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{StaticResource awesomeBkGrVert}" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding Path=IsStatusOutstandingAndNoUser}" Value="True">
+            <DataTrigger.EnterActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardVert}"/>
+            </DataTrigger.EnterActions>
+            <DataTrigger.ExitActions>
+              <BeginStoryboard Storyboard="{StaticResource awesomeBkGrStoryboardStop}"/>
+            </DataTrigger.ExitActions>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+
     </ResourceDictionary>
   </UserControl.Resources>
   <Grid >
-    <DataGrid Background="#222" Foreground="#eee" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  
+    <DataGrid Background="#222" Foreground="#eee" AutoGenerateColumns="False" x:Name="dg2"  
+              ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  
                 VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
                 HeadersVisibility="None">
       <DataGrid.Columns>
         <DataGridCheckBoxColumn Width="*" Binding="{Binding IsStatusOutstandingAndNoUser}" Header="IsStatusOutstandingAndNoUser" />
         <DataGridTextColumn     Width="*" Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
-        <DataGridTextColumn     Width="*" Binding="{Binding Name}" Header="Name" />
+        <DataGridTextColumn     Width="*" Binding="{Binding Name}" Header="Name" CellStyle="{StaticResource awesomeStyleRadlDiag}"/>
         <DataGridTemplateColumn Width="*" CellTemplate="{StaticResource LookTemplate}" Header="Look" />
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
