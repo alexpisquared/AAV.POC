@@ -45,7 +45,7 @@ namespace AAV.Animation.POC.Model
         }
       }
     }
-    bool _Done = false; public bool Done
+    bool _Done = false; public bool IsStatusOutstandingAndNoUser
     {
       get => _Done;
 
@@ -54,7 +54,7 @@ namespace AAV.Animation.POC.Model
         if (_Done != value)
         {
           _Done = value;
-          OnPropertyChanged("Done");
+          OnPropertyChanged("IsStatusOutstandingAndNoUser");
         }
       }
     }

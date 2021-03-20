@@ -1,25 +1,30 @@
 ﻿<UserControl x:Class="AAV.Animation.POC.Animes.GradientWave" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"         
-             xmlns:models="clr-namespace:AAV.Animation.POC.Model" d:DesignHeight="200" d:DesignWidth="420">
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:models="clr-namespace:AAV.Animation.POC.Model" Height="200" Width="420" Background="#222">
   <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Animes/DataGrid.Anime.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <system:Double x:Key="blur">0</system:Double>
+    </ResourceDictionary>
   </UserControl.Resources>
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="1*" />
-    </Grid.ColumnDefinitions>
-
-
-    <DataGrid Grid.Column="0" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" >
+  <Grid >
+    <DataGrid Background="#222" Foreground="#eee" AutoGenerateColumns="False" x:Name="dg2"  ItemContainerStyle="{StaticResource awesomeDataGridRowStyle}"  
+                VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent" 
+                HeadersVisibility="None">
       <DataGrid.Columns>
+        <DataGridCheckBoxColumn Width="*" Binding="{Binding IsStatusOutstandingAndNoUser}" Header="IsStatusOutstandingAndNoUser" />
         <DataGridTextColumn     Width="*" Binding="{Binding ID}"   Header="ID"   CellStyle="{StaticResource awesomeDataGridCellStyle}"/>
-        <DataGridCheckBoxColumn Width="*" Binding="{Binding Done}" Header="Done" />
         <DataGridTextColumn     Width="*" Binding="{Binding Name}" Header="Name" />
-        <DataGridTemplateColumn CellTemplate="{StaticResource LookTemplate}" Header="Look" Width="*"  />
+        <DataGridTemplateColumn Width="*" CellTemplate="{StaticResource LookTemplate}" Header="Look" />
       </DataGrid.Columns>
       <DataGrid.ItemsSource>
         <x:Array Type="{x:Type models:SampleListItem}">
-          <models:SampleListItem ID="77" Name="Abc123" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image04.png" Done="False"/>
-          <models:SampleListItem ID="71" Name="Aen an" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image02.png" Done="False"/>
-          <models:SampleListItem ID="56" Name="Mauris" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image03.png" Done="True"/>
+          <models:SampleListItem ID="77" Name="Abc123" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image04.png" IsStatusOutstandingAndNoUser="False"/>
+          <models:SampleListItem ID="71" Name="Aen an" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image02.png" IsStatusOutstandingAndNoUser="False"/>
+          <models:SampleListItem ID="56" Name="Mauris" Look="C:\g\AAV.WpfTheme.Model\Src\sln\SampleData\SampleDataSource\SampleDataSource_Files\image03.png" IsStatusOutstandingAndNoUser="True"/>
         </x:Array>
       </DataGrid.ItemsSource>
     </DataGrid>
