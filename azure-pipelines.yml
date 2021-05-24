@@ -28,6 +28,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 # ^^ unchanged Defaults ^^ --> all worked!!!
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'Src\\AAV.Animation.POC\\bin\\Release'
