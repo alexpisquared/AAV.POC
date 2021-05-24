@@ -10,10 +10,4 @@
     <Folder Include="RsrsDict\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="..\..\..\CI\Src\CI\CI.GUI.Support.WpfLibrary\Base\DataGrid.Anime.xaml" Link="AsLink\DataGrid.Anime.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
 </Project>
