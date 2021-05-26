@@ -27,7 +27,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-# ^^ unchanged Defaults ^^ --> all worked!!!
+# ^^ unchanged Defaults ^^ --> all worked!!! ^^ unchanged Defaults ^^ --> all worked!!! ^^ unchanged Defaults ^^ --> all worked!!! ^^ unchanged Defaults ^^ --> all worked!!!
 
 - task: CopyFiles@2
   inputs:
