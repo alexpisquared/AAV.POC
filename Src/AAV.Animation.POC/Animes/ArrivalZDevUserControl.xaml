@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArrivalZDevUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450">
+  <UserControl.Resources >
+    <Storyboard x:Key="sbThird" RepeatBehavior="Forever" AutoReverse="True"   >
+      <ColorAnimation                    Duration="0:0:1"   From="#f00" To="#0f0" Storyboard.TargetProperty="(SolidColorBrush.Color)" />
+      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:1.0" From="0.15" To="0.6"  Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
+      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:1.0" From="200"  To="100"  Storyboard.TargetProperty="(TranslateTransform.Y)" />
+      <DoubleAnimation BeginTime="0:0:1" Duration="0:0:1.0"             To="1.0"  Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
+      <DoubleAnimation BeginTime="0:0:1" Duration="0:0:1.0"             To="000"  Storyboard.TargetProperty="(TranslateTransform.Y)" />
+    </Storyboard>
+    <Style TargetType="FrameworkElement" x:Key="AnyStyle2">
+      <Style.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <BeginStoryboard Storyboard="{StaticResource sbThird}" />
+        </EventTrigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+  <UserControl.Triggers>
+    <!--<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard>
+        <Storyboard x:Name="sbSlowRot" RepeatBehavior="Forever"  >
+          <DoubleAnimation Duration="0:10:0" BeginTime="0:0:0" From="0" To="360" Storyboard.TargetName="bg0" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+    -->
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource sbThird}" />
+    </EventTrigger>
+  </UserControl.Triggers>
+  <Grid x:Name="bg0" RenderTransformOrigin="0.5,0.5" Background="#48c" Height="450" Width="450">
+    <Grid.RenderTransform>
+      <TransformGroup>
+        <ScaleTransform/>
+        <SkewTransform/>
+        <RotateTransform/>
+        <TranslateTransform/>
+      </TransformGroup>
+    </Grid.RenderTransform>
+    <Grid.Triggers>
+      <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+        <BeginStoryboard Storyboard="{StaticResource sbThird}" />
+      </EventTrigger>
+    </Grid.Triggers>
+
+    <Rectangle x:Name="bg2" Fill="#ee0" Width="26" Height="260" RenderTransformOrigin="0.5,0.5" Style="{StaticResource AnyStyle2}" >
+      <Rectangle.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform ScaleY=".15"/>
+          <SkewTransform/>
+          <RotateTransform/>
+          <TranslateTransform Y="200"/>
+        </TransformGroup>
+      </Rectangle.RenderTransform>
+    </Rectangle>
+
+    <Button Content="AnimeStyle" Style="{StaticResource MyButtonStyle}"    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+
+    <Rectangle                   Style="{StaticResource MyRectangleStyle}" Width="22" Height="22" RenderTransformOrigin="0.5,0.5" Fill="#333" >
+      <Rectangle.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform />
+          <TranslateTransform />
+        </TransformGroup>
+      </Rectangle.RenderTransform>
+    </Rectangle>
+
+  </Grid>
+</UserControl>

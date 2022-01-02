@@ -9,31 +9,30 @@
         <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" >
           <!--<DoubleAnimation Duration="0:0:2" From="-1.5707" To="+1.5707" AutoReverse="True" Storyboard.TargetName="bg1" Storyboard.TargetProperty="StartAngle" />-->
           <!--<DoubleAnimation Duration="0:0:1" From="+1.5707" To="+7.8535" Storyboard.TargetName="bg1" Storyboard.TargetProperty="EndAngle"   AccelerationRatio=".5" />-->
-
-          <DoubleAnimation Duration="0:0:1" From="0" To="360" Storyboard.TargetName="bg1" 
-                           AccelerationRatio=".03"
-                           DecelerationRatio=".03"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
-
         </Storyboard>
       </BeginStoryboard>
     </EventTrigger>
   </UserControl.Triggers>
   <Grid Height="100" Width="100">
 
-    <Ellipse Stroke="#eee" StrokeThickness="1" Margin="1"/>
-    
-    <!--
-            Radius="48.5" 
+    <Ellipse Stroke="#0f0" StrokeThickness="3" Margin="1" x:Name="bg1_" RenderTransformOrigin="0.5,0.5"  >
+      <Ellipse.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform/>
+          <TranslateTransform/>
+        </TransformGroup>
+      </Ellipse.RenderTransform>
+    </Ellipse>
+    <!--    Radius="48.5" 
             SmallAngle="True" 
-            Center="50 50"
-    -->
+            Center="50 50"    -->
 
-    <!-- //tu: blend/arc problem fix 
+    <!-- //tu: blend/arc problem fix ... does not work any more (Jan 2022)
     <PackageReference Include="Unnoficial.Microsoft.Expression.Drawing" Version="1.0.0" />
-    <ed:Arc Stroke="#68a" StrokeThickness="1" 
-            EndAngle="+3.1414" 
-            x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
+    -->
+    <ed:Arc Stroke="#0f0" StrokeThickness="8" EndAngle="+3.1414" x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
       <ed:Arc.RenderTransform>
         <TransformGroup>
           <ScaleTransform/>
@@ -43,10 +42,9 @@
         </TransformGroup>
       </ed:Arc.RenderTransform>
     </ed:Arc>
-    -->
 
     <Viewbox Margin="5">
-      <TextBlock Text="Boring..."/>
+      <TextBlock Text="Boring..." Foreground="#0f0"/>
     </Viewbox>
   </Grid>
 </UserControl>

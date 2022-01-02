@@ -1,0 +1,13 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Animes="clr-namespace:AAV.Animation.POC.Animes" x:Class="AAV.Animation.POC.Vws.Window1" mc:Ignorable="d"
+        xmlns:local="clr-namespace:AAV.Animation.POC.Vws"
+        Title="Window1" Height="500" Width="1000" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Topmost="True"
+        Background="Transparent">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Animes:ArrivaLogoUserControl  Margin="10" />
+    <!--<Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />-->
+  </Grid>
+</Window>

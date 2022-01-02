@@ -1,12 +1,10 @@
 ﻿<UserControl x:Class="AAV.Animation.POC.NotchedSliderUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             xmlns:local="clr-namespace:AAV.Animation.POC"
-             d:DesignHeight="450" d:DesignWidth="450">
+             d:DesignHeight="200" d:DesignWidth="450" Background="#555">
   <UserControl.Resources>
-
     <Duration x:Key="du1"     >0:0:2.0</Duration>
     <Duration x:Key="duY"     >0:0:0.5</Duration>
 
-    <Storyboard x:Key="_sbBusy" >
+    <Storyboard x:Key="_sbBusy">
       <DoubleAnimation To="0"  Duration="0:0:.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ln1" />
       <DoubleAnimation To="25" Duration="0:0:.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ln1" />
 

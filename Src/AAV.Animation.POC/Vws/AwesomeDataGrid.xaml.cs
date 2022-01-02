@@ -9,7 +9,7 @@ namespace AAV.Animation.POC.Vws
     {
       InitializeComponent();
 
-      if (Environment.MachineName == "RAZER1") { Top = 1700; Left = 1100; }
+      if (Environment.MachineName == "RAZER1") { Top = 0; Left = 0; }
     }
     void onClose(object s, RoutedEventArgs e) => Close();
   }

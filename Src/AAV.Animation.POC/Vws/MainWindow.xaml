@@ -2,62 +2,30 @@
         xmlns:Vws="clr-namespace:AAV.Animation.POC.Vws" 
         xmlns:local="clr-namespace:AAV.Animation.POC"
         xmlns:Animes="clr-namespace:AAV.Animation.POC.Animes" 
-        Title="MainWindow" Height="1300" Width="500" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True" WindowStyle="None">
+        Title="All at Once" Height="1000" Width="1500" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True" WindowStyle="None">
   <Border BorderBrush="#888" BorderThickness="2">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
         <RowDefinition Height="3*" />
       </Grid.RowDefinitions>
 
-      <Rectangle Grid.Row="0" Fill="#ffe" />
-      <Rectangle Grid.Row="1" Fill="#fef" />
-      <Rectangle Grid.Row="2" Fill="#eff" />
-      <Rectangle Grid.Row="3" Fill="#def" />
-      <Rectangle Grid.Row="4" Fill="#ffe" />
-      <Rectangle Grid.Row="5" Fill="#fed" />
+      <WrapPanel>
+        <local:NotchedSliderUserControl />
+        <local:DataTriggerUserControl   />
+        <local:ItemsControlUserControl  />
+        <Vws:PulseAnymi                 Height="133"/>
+        <Animes:RectagoneUserControl    />
+        <Animes:ArcRotUserControl       Width="120" HorizontalAlignment="Left" />
+        <Animes:MultiRotUserControl     Width="120" HorizontalAlignment="Center" />
+        <Animes:OscilloEllipses         Width="120" HorizontalAlignment="Right"/>
+        <Animes:RotoPhotoUserControl    Height="200" />
+        <Animes:WindAnimeUserControl    />
+        <Animes:GradientWave            />
+        <Animes:TextIntro               />
 
-      <local:NotchedSliderUserControl Grid.Row="0" />
-      <local:DataTriggerUserControl   Grid.Row="1" />
-      <local:ItemsControlUserControl  Grid.Row="2" />
-      <Vws:PulseAnymi                 Grid.Row="3" />
-      <Animes:RectagoneUserControl    Grid.Row="4" />
-      <Animes:ArcRotUserControl       Grid.Row="5" Width="120" HorizontalAlignment="Left" />
-      <Animes:MultiRotUserControl     Grid.Row="5" Width="120" HorizontalAlignment="Center" />
-      <Animes:OscilloEllipses         Grid.Row="5" Width="120" HorizontalAlignment="Right"/>
-      <Animes:RotoPhotoUserControl    Grid.Row="6" Height="200" />
-      <Animes:WindAnimeUserControl    Grid.Row="7" />
-      <Animes:GradientWave            Grid.Row="8" />
-      <Animes:TextIntro               Grid.Row="12" />
-
-      <CheckBox IsChecked="{Binding IsBusy}" Content=" Is _Busy " VerticalAlignment="Top"    HorizontalAlignment="Right" Grid.Row="3" />
-      <CheckBox IsChecked="{Binding IsBusy}" Content=" _Is Busy " VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="3" />
-
-      <Menu HorizontalAlignment="Right" VerticalAlignment="Top" >
-        <MenuItem Header="Header0" IsCheckable="True" />
-        <MenuItem Header="Header1">
-          <MenuItem Header="Header1"/>
-          <MenuItem Header="Header2" />
-          <MenuItem Header="Header3" />
-        </MenuItem>
-        <MenuItem Header="Header2" />
-        <MenuItem Header="Header3" />
-      </Menu>
-      <!--
-    -->
-
-
-
+        <CheckBox IsChecked="{Binding IsBusy}" Content=" Is _Busy " VerticalAlignment="Top"    HorizontalAlignment="Right" Grid.Row="3" />
+        <CheckBox IsChecked="{Binding IsBusy}" Content=" _Is Busy " VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="3" />
+      </WrapPanel>
 
     </Grid>
   </Border>
