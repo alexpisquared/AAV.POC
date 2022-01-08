@@ -14,10 +14,4 @@
     <PackageReference Include="Microsoft.SDK.Expression.Blend" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="..\..\..\CI-Reimagined-Invention\Src\CI-RI\CI.Visual.Lib\Base\DataGrid.Anime.xaml" Link="AsLink\DataGrid.Anime.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
 </Project>
