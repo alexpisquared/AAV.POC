@@ -2,7 +2,8 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2022'
+  #mImage: 'windows-latest' <== must be 2022 since .NET 6.0 
 
 variables:
   solution: '**/*.sln'
