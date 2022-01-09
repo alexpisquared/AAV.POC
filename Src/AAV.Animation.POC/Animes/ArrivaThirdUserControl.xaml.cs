@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AAV.Animation.POC.Animes
 {
-  /// <summary>
-  /// Interaction logic for ArrivaThirdUserControl.xaml
-  /// </summary>
   public partial class ArrivaThirdUserControl : UserControl
   {
     public ArrivaThirdUserControl()
     {
       InitializeComponent();
+      DataContext = this;
     }
+    public static readonly DependencyProperty IsOnProperty = DependencyProperty.Register("IsOn", typeof(bool), typeof(ArrivaThirdUserControl), new PropertyMetadata(false, propertyChangedCallback)); public bool IsOn { get => (bool)GetValue(IsOnProperty); set => SetValue(IsOnProperty, value); }
+
+    static void propertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e) => Debug.WriteLine($"@@@@@@@@ {e.NewValue}");
   }
 }
