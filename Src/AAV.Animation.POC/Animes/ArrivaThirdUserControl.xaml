@@ -15,9 +15,9 @@
 
     <Storyboard x:Key="sbkStop" FillBehavior='Stop'>
       <!-- //tu: the idea is to bring all the targets back to starting positions ... oterwise, they'll just KEEP GOING FOREVER!!!-->
-      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:1.0"             To="0.0"   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" EasingFunction="{StaticResource co}" />
-      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:1.0"             To="200"   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"  EasingFunction="{StaticResource co}" />
-      <DoubleAnimation BeginTime="0:0:2" Duration="0:0:1.0"             To="-180"  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(Angle)"                 EasingFunction="{StaticResource co}" />
+      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:2.0"             To="0.15"  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" EasingFunction="{StaticResource co}" />
+      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:2.0"             To="200"   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"  EasingFunction="{StaticResource co}" />
+      <DoubleAnimation BeginTime="0:0:0" Duration="0:0:2.0"             To="-180"  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(Angle)"                 EasingFunction="{StaticResource co}" />
     </Storyboard>
 
     <Style TargetType="Rectangle" x:Key="IsOnStyle">

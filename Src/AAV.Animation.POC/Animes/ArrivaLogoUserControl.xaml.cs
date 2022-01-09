@@ -1,11 +1,18 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AAV.Animation.POC.Animes
 {
   public partial class ArrivaLogoUserControl : UserControl
   {
-    public ArrivaLogoUserControl() => InitializeComponent();
-    public static readonly DependencyProperty IsOnProperty = DependencyProperty.Register("IsOn", typeof(bool), typeof(ArrivaLogoUserControl), new PropertyMetadata(false)); public bool IsOn { get => (bool)GetValue(IsOnProperty); set => SetValue(IsOnProperty, value); }
+    public ArrivaLogoUserControl()
+    {
+      InitializeComponent();
+      DataContext = this;
+    }
+    public static readonly DependencyProperty IsOnProperty = DependencyProperty.Register("IsOn", typeof(bool), typeof(ArrivaLogoUserControl), new PropertyMetadata(false, propertyChangedCallback)); public bool IsOn { get => (bool)GetValue(IsOnProperty); set => SetValue(IsOnProperty, value); }
+
+    static void propertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e) => Debug.WriteLine($"@@@@@@@@ 3/3 {e.NewValue}");
   }
 }
