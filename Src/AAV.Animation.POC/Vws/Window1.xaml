@@ -2,14 +2,11 @@
         Title="Window1" Height="700" Width="1700" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Topmost="True"
         Background="Transparent" x:Name="ths">
   <Window.Resources>
-    <Storyboard x:Key="sb1" RepeatBehavior='Forever' >
-      <DoubleAnimation Storyboard.TargetProperty='Opacity' From='0' To='1' Duration='0:0:1' AutoReverse='True' />
-      <ColorAnimation  Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" From="Red" To="Green" Duration="0:0:0.3" />
-    </Storyboard>
-    <Storyboard x:Key="sb2" FillBehavior='Stop'>
-      <DoubleAnimation Storyboard.TargetProperty='Opacity'          To='.3' Duration='0:0:1' />
-      <ColorAnimation  Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="Blue" Duration="0:0:0.3" />
-    </Storyboard>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AAV.Animation.POC;component/RsrsDict/Dictionary1.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
   </Window.Resources>
   <Grid Margin="100">
     <Grid.ColumnDefinitions>
@@ -20,23 +17,6 @@
     <Animes:ArrivaLogoUserControl  Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" />    <!--<Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />-->
 
     <ToggleButton Content="_On/Off" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="btnOnOff" IsChecked="{Binding Path=IsOn}" />
-    
-    <TextBlock Grid.Column="1" Text='WPF Application' Name='tb1' Background='#ff0' FontSize='28' TextAlignment='Center' Height='50' VerticalAlignment='Top'>
-      <TextBlock.Style>
-        <Style>
-          <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=IsOn, UpdateSourceTrigger=PropertyChanged}" Value="True">
-              <DataTrigger.EnterActions>
-                <BeginStoryboard Storyboard="{StaticResource sb1}" />
-              </DataTrigger.EnterActions>
-              <DataTrigger.ExitActions>
-                <BeginStoryboard Storyboard="{StaticResource sb2}" />
-              </DataTrigger.ExitActions>
-            </DataTrigger>
-          </Style.Triggers>
-        </Style>
-      </TextBlock.Style>
-    </TextBlock>
     
   </Grid>
 </Window>

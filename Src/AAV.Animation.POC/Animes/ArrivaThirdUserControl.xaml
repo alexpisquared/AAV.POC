@@ -27,7 +27,7 @@
           <Setter Property="Fill" Value="#0f0" />
         </DataTrigger>
         <DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="False">
-          <Setter Property="Fill" Value="#00f" />
+          <Setter Property="Fill" Value="#e00" />
         </DataTrigger>
         <DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="True">
           <DataTrigger.EnterActions>
