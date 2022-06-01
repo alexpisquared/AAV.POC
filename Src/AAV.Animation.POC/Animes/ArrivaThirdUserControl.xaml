@@ -1,5 +1,4 @@
-﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArrivaThirdUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="450">
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArrivaThirdUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="450">
   <UserControl.Resources>
     <Storyboard x:Key="sbkFrvr" RepeatBehavior="Forever" >
       <DoubleAnimation BeginTime="0:0:0" Duration="0:0:1.0" From="0.0"  To="0.6"   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" EasingFunction="{StaticResource ci}" />
@@ -24,10 +23,10 @@
       <!--<Setter Property="Fill" Value="#ff0" />-->
       <Style.Triggers>
         <DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="True">
-          <Setter Property="Fill" Value="#0f0" />
+          <Setter Property="Fill" Value="#0bf" />
         </DataTrigger>
         <DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="False">
-          <Setter Property="Fill" Value="#e00" />
+          <Setter Property="Fill" Value="#a7e" />
         </DataTrigger>
         <DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="True">
           <DataTrigger.EnterActions>
@@ -38,21 +37,11 @@
             <!--<StopStoryboard BeginStoryboardName="sbkFrvr" />-->
           </DataTrigger.ExitActions>
         </DataTrigger>
-        <!--<DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="False">
-          <DataTrigger.EnterActions>
-          </DataTrigger.EnterActions>
-          <DataTrigger.ExitActions>
-          </DataTrigger.ExitActions>
-        </DataTrigger>-->
+        <!--<DataTrigger Binding="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" Value="False"><DataTrigger.EnterActions></DataTrigger.EnterActions><DataTrigger.ExitActions></DataTrigger.ExitActions></DataTrigger>-->
       </Style.Triggers>
     </Style>
-
   </UserControl.Resources>
-  <!--<UserControl.Triggers>
-    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-      <BeginStoryboard Storyboard="{StaticResource sbkFrvr}" />
-    </EventTrigger>
-  </UserControl.Triggers>-->
+  <!--<UserControl.Triggers><EventTrigger RoutedEvent="FrameworkElement.Loaded"><BeginStoryboard Storyboard="{StaticResource sbkFrvr}" /></EventTrigger></UserControl.Triggers>-->
   <Grid>
     <Rectangle x:Name="bg1" Width="26" Height="260" RenderTransformOrigin="0.5,0.5" Style="{StaticResource IsOnStyle}" >
       <Rectangle.RenderTransform>
