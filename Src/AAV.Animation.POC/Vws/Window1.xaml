@@ -13,12 +13,16 @@
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    
-    <Animes:ArrivaLogoUserControl   Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" />    <!--<Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />-->
 
+    <Animes:ArrivaLogoDropPanel   Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" Grid.Column="0" />
+
+    <Animes:ArrivaLogoUserControl Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" Grid.Column="1" />
+    <!--
+    <Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />
     <Animes:BtnTargeterUserControl  Margin="10" />
+    -->
 
     <ToggleButton Content="_On/Off" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="btnOnOff" IsChecked="{Binding Path=IsOn}" Background="#f88" />
-    
+
   </Grid>
 </Window>

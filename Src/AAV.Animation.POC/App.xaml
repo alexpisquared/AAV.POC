@@ -10,12 +10,16 @@
     <QuarticEase x:Key="qo"     EasingMode="EaseOut" />
     <QuarticEase x:Key="qi"     EasingMode="EaseIn" />
     <QuarticEase x:Key="qb"     EasingMode="EaseInOut" />
+    <QuinticEase x:Key="fo"     EasingMode="EaseOut" />
+    <QuinticEase x:Key="fi"     EasingMode="EaseIn" />
+    <QuinticEase x:Key="fb"     EasingMode="EaseInOut" />
     <BackEase    x:Key="ko"     EasingMode="EaseOut" />
     <BackEase    x:Key="ki"     EasingMode="EaseIn" />
     <BackEase    x:Key="kb"     EasingMode="EaseInOut" />
     <ElasticEase x:Key="ei"     EasingMode="EaseIn" />
     <ElasticEase x:Key="eo"     EasingMode="EaseOut" />
     <ElasticEase x:Key="eb"     EasingMode="EaseInOut" />
+    <ElasticEase x:Key="ei0"    EasingMode="EaseIn"  Oscillations="0" />
     <ElasticEase x:Key="eo0s5"  EasingMode="EaseOut" Oscillations="0" Springiness="5" />
     <ElasticEase x:Key="eo2s5"  EasingMode="EaseOut" Oscillations="2" Springiness="5" />
     <BounceEase  x:Key="bo"     EasingMode="EaseOut" />

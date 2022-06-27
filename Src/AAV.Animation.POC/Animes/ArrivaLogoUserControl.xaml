@@ -1,45 +1,47 @@
-﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:AAV.Animation.POC.Animes" x:Class="AAV.Animation.POC.Animes.ArrivaLogoUserControl" mc:Ignorable="d" 
+﻿<UserControl x:Class="AAV.Animation.POC.Animes.ArrivaLogoUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:AAV.Animation.POC.Animes" mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="450" x:Name="ths">
-  <Grid x:Name="bg0" RenderTransformOrigin="0.5,0.5" Height="450" Width="450">
-    <Grid.RenderTransform>
-      <TransformGroup>
-        <ScaleTransform/>
-        <SkewTransform/>
-        <RotateTransform/>
-        <TranslateTransform/>
-      </TransformGroup>
-    </Grid.RenderTransform>
-
-    <Ellipse >
-      <Ellipse.Fill>
-        <RadialGradientBrush Center="0.4,0.3" GradientOrigin="0.3,0.2">
-          <GradientStop Color="#FF4488CC"/>
-          <GradientStop Color="#FF004488" Offset="1"/>
-        </RadialGradientBrush>
-      </Ellipse.Fill>
-    </Ellipse>
-
-    <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" />
-    <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" RenderTransformOrigin="0.5,0.5" >
-      <local:ArrivaThirdUserControl.RenderTransform>
+  <Viewbox>
+    <Grid x:Name="bg0" RenderTransformOrigin="0.5,0.5" Height="450" Width="450">
+      <Grid.RenderTransform>
         <TransformGroup>
           <ScaleTransform/>
           <SkewTransform/>
-          <RotateTransform Angle="120"/>
+          <RotateTransform/>
           <TranslateTransform/>
         </TransformGroup>
-      </local:ArrivaThirdUserControl.RenderTransform>
-    </local:ArrivaThirdUserControl>
-    <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" RenderTransformOrigin="0.5,0.5" >
-      <local:ArrivaThirdUserControl.RenderTransform>
-        <TransformGroup>
-          <ScaleTransform/>
-          <SkewTransform/>
-          <RotateTransform Angle="240"/>
-          <TranslateTransform/>
-        </TransformGroup>
-      </local:ArrivaThirdUserControl.RenderTransform>
-    </local:ArrivaThirdUserControl>
+      </Grid.RenderTransform>
 
-  </Grid>
+      <Ellipse >
+        <Ellipse.Fill>
+          <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.4,0.3">
+            <GradientStop Color="#FF4488CC"/>
+            <GradientStop Color="#FF004488" Offset="1"/>
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+
+      <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" />
+      <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" RenderTransformOrigin="0.5,0.5" >
+        <local:ArrivaThirdUserControl.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform Angle="120"/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </local:ArrivaThirdUserControl.RenderTransform>
+      </local:ArrivaThirdUserControl>
+      <local:ArrivaThirdUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" RenderTransformOrigin="0.5,0.5" >
+        <local:ArrivaThirdUserControl.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform Angle="240"/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </local:ArrivaThirdUserControl.RenderTransform>
+      </local:ArrivaThirdUserControl>
+
+    </Grid>
+  </Viewbox>
 </UserControl>

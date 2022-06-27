@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace AAV.Animation.POC.Animes;
+﻿namespace AAV.Animation.POC.Animes;
 
 public partial class BtnTargeterUserControl : UserControl
 {
