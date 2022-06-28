@@ -10,13 +10,14 @@
   </Window.Resources>
   <Grid Margin="100">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="*"/>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
     </Grid.ColumnDefinitions>
 
     <Animes:ArrivaLogoDropPanel   Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" Grid.Column="0" />
-
     <Animes:ArrivaLogoUserControl Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" Grid.Column="1" />
+    <Animes:SimpleTimerAnimation  Margin="10" IsOn="{Binding ElementName=btnOnOff, Path=IsChecked}" Grid.Column="2" />
     <!--
     <Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />
     <Animes:BtnTargeterUserControl  Margin="10" />

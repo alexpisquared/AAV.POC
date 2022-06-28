@@ -13,3 +13,5 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
 global using System.Windows.Shapes;
+global using static System.Diagnostics.Trace;
+global using System.Threading;

@@ -4,7 +4,6 @@
              d:DesignHeight="450" d:DesignWidth="800" x:Name="ths">
   <UserControl.Resources>
     <ResourceDictionary>
-      <BounceEase   x:Key="bo1"    EasingMode="EaseOut" Bounces="1" />
       <sys:Double   x:Key="blur">0</sys:Double>
       <Duration     x:Key="du757">0:0:0.757</Duration>
       <Duration     x:Key="du257">0:0:0.257</Duration>
@@ -13,13 +12,9 @@
         <DoubleAnimation Storyboard.TargetProperty="Opacity"                                From="0.00" To="1"    Duration="{StaticResource du257}" EasingFunction="{StaticResource si}" />
         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)" From="-400" To="0"    Duration="{StaticResource du757}" EasingFunction="{StaticResource bo}" />
       </Storyboard>
-      <Storyboard x:Key="sbDropOu">
+      <Storyboard x:Key="sbDropOu" BeginTime="0:0:1" >
         <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="{StaticResource bt257}"         To="0.00" Duration="{StaticResource du757}" EasingFunction="{StaticResource si}" />
         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"             To="+400" Duration="{StaticResource du757}" EasingFunction="{StaticResource ei0}" />
-      </Storyboard>
-      <Storyboard x:Key="sbWiggle" RepeatBehavior="0:10:0">
-        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)"            To="40"   Duration="0:0:1" EasingFunction="{StaticResource so}"                   />
-        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)"            To="00"   Duration="0:0:1" EasingFunction="{StaticResource eo}" BeginTime="0:0:1" />
       </Storyboard>
     </ResourceDictionary>
   </UserControl.Resources>
