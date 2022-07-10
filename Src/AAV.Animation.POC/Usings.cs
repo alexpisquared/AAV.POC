@@ -15,3 +15,4 @@ global using System.Windows.Navigation;
 global using System.Windows.Shapes;
 global using static System.Diagnostics.Trace;
 global using System.Threading;
+global using AAV.Animation.POC.Helpers;

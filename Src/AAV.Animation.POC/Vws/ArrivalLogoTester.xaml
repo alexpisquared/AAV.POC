@@ -29,8 +29,9 @@
   <Window.Triggers>
     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
       <BeginStoryboard>
-        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" Timeline.DesiredFrameRate="16">
-          <DoubleAnimation Duration="0:0:2" From="0" To="100" AutoReverse="True" Storyboard.TargetName="s1" Storyboard.TargetProperty="Value" EasingFunction="{StaticResource sb}" />
+        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" Timeline.DesiredFrameRate="32">
+          <DoubleAnimation Duration="0:0:2" From="0" To="99.9" AutoReverse="True" Storyboard.TargetName="s1" Storyboard.TargetProperty="Value" EasingFunction="{StaticResource sb}" />
+          <DoubleAnimation Duration="0:0:2" From="0" To="99.9" AutoReverse="True" Storyboard.TargetName="arcpi1" Storyboard.TargetProperty="Angle" EasingFunction="{StaticResource sb}" />
           <!--<DoubleAnimation Duration="0:0:1" From="+1.5707" To="+7.8535" Storyboard.TargetName="bg1" Storyboard.TargetProperty="EndAngle"   AccelerationRatio=".5" />-->
         </Storyboard>
       </BeginStoryboard>
@@ -58,7 +59,7 @@
 
     <Viewbox Grid.Column="3">
       <Grid>
-        <local:ArcPi Angle="{Binding ElementName=s1, Path=Value}" Radiu="16" Width="32" Height="32" />
+        <local:ArcPi Radiu="16" Width="32" Height="32" x:Name="arcpi1" />
         <Button      Content="X" Foreground="#0c0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource NavButton}" Background="#00f" />
       </Grid>
     </Viewbox>
