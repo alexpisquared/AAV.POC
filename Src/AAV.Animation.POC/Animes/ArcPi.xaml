@@ -2,6 +2,6 @@
              d:DesignHeight="450" d:DesignWidth="450">
   <Grid>
     <Ellipse Fill="#10f0" />
-    <Path   x:Name="arc_path" Stroke="#f0f0" StrokeThickness="5" />
+    <Path   x:Name="arc_path" Stroke="#f0f0" StrokeThickness="3" />
   </Grid>
 </UserControl>
