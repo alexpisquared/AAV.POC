@@ -11,6 +11,5 @@ public partial class ArrivalLogoTester : Window
     _ = btnOnOff.Focus();
   }
   public static readonly DependencyProperty IsOnProperty = DependencyProperty.Register("IsOn", typeof(bool), typeof(ArrivalLogoTester), new PropertyMetadata(false, propertyChangedCallback)); public bool IsOn { get => (bool)GetValue(IsOnProperty); set => SetValue(IsOnProperty, value); }
-
   static void propertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e) => Debug.WriteLine($"@@@@@@@@ Win {e.NewValue}");
 }

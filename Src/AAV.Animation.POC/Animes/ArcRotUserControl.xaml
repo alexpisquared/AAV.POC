@@ -15,7 +15,7 @@
   </UserControl.Triggers>
   <Grid Height="100" Width="100">
 
-    <Ellipse Stroke="#0f0" StrokeThickness="3" Margin="1" x:Name="bg1_" RenderTransformOrigin="0.5,0.5"  >
+    <Ellipse Stroke="#040" StrokeThickness="3" Margin="1" x:Name="bg1_" RenderTransformOrigin="0.5,0.5"  >
       <Ellipse.RenderTransform>
         <TransformGroup>
           <ScaleTransform/>
@@ -32,7 +32,7 @@
     <!-- //tu: blend/arc problem fix ... does not work any more (Jan 2022)
     <PackageReference Include="Unnoficial.Microsoft.Expression.Drawing" Version="1.0.0" />
     -->
-    <ed:Arc Stroke="#0f0" StrokeThickness="8" EndAngle="+3.1414" x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
+    <ed:Arc Stroke="#080" StrokeThickness="8" EndAngle="+259.1414" x:Name="bg1" RenderTransformOrigin="0.5,0.5" >
       <ed:Arc.RenderTransform>
         <TransformGroup>
           <ScaleTransform/>
@@ -44,7 +44,7 @@
     </ed:Arc>
 
     <Viewbox Margin="5">
-      <TextBlock Text="Boring..." Foreground="#0f0"/>
+      <TextBlock Text="Boring..." Foreground="#0a0"/>
     </Viewbox>
   </Grid>
 </UserControl>

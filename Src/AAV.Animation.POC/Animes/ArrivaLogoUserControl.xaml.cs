@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace AAV.Animation.POC.Animes;
+﻿namespace AAV.Animation.POC.Animes;
 
 public partial class ArrivaLogoUserControl : UserControl
 {

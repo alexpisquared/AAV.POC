@@ -1,9 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace AAV.Animation.POC.Helpers;
+﻿namespace AAV.Animation.POC.Helpers;
 internal class ArcHelper
 {
   const double _2Pi = Math.PI * 2;

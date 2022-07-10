@@ -8,6 +8,16 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Window.Resources>
+  <Window.Triggers>
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard>
+        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" >
+          <DoubleAnimation Duration="0:0:2" From="0" To="100" AutoReverse="True" Storyboard.TargetName="s1" Storyboard.TargetProperty="Value" EasingFunction="{StaticResource sb}" />
+          <!--<DoubleAnimation Duration="0:0:1" From="+1.5707" To="+7.8535" Storyboard.TargetName="bg1" Storyboard.TargetProperty="EndAngle"   AccelerationRatio=".5" />-->
+        </Storyboard>
+      </BeginStoryboard>
+    </EventTrigger>
+  </Window.Triggers>
   <Grid Margin="100">
     <Grid.ColumnDefinitions>
       <ColumnDefinition />
@@ -16,9 +26,9 @@
       <ColumnDefinition />
     </Grid.ColumnDefinitions>
 
-    <Animes:ArrivaLogoDropPanel   Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="0" />
-    <Animes:ArrivaLogoUserControl Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="1" />
-    <Animes:SimpleTimerAnimation  Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="2" />
+    <Animes:ArrivaLogoDropPanel   Grid.Column="0" Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" />
+    <Animes:ArrivaLogoUserControl Grid.Column="1" Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" />
+    <Animes:SimpleTimerAnimation  Grid.Column="2" Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" />
 
     <ToggleButton Content="_On/Off" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="btnOnOff" IsChecked="{Binding IsOn}" Background="#f88" />
     <!--
@@ -26,9 +36,9 @@
     <Animes:BtnTargeterUserControl  Margin="10" />
     -->
 
-
-    <local:ArcPi Grid.Column="3" Angle="{Binding ElementName=s1, Path=Value}"/>
-    <Slider Grid.Column="3" Value="33" Maximum="100" x:Name="s1" VerticalAlignment="Bottom" />
+    <local:ArcPi Grid.Column="3" Angle="{Binding ElementName=s1, Path=Value}" Radiu="100" />
+    <Slider      Grid.Column="3" Value="33" Maximum="99" x:Name="s1" VerticalAlignment="Bottom" />
+    <TextBlock   Grid.Column="3" Text="{Binding ElementName=s1, Path=Value, StringFormat='{}{0:N3}'}" Foreground="#0c0" d:Text="123.222" />
 
   </Grid>
 </Window>
