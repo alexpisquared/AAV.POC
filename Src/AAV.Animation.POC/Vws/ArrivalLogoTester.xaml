@@ -1,0 +1,34 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Animes="clr-namespace:AAV.Animation.POC.Animes" xmlns:local="clr-namespace:AAV.Animation.POC.Vws" x:Class="AAV.Animation.POC.Vws.ArrivalLogoTester" mc:Ignorable="d"
+        Title="ArrivalLogoTester" Height="700" Width="1700" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Topmost="True"
+        Background="Transparent" x:Name="ths">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AAV.Animation.POC;component/RsrsDict/Dictionary1.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid Margin="100">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+
+    <Animes:ArrivaLogoDropPanel   Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="0" />
+    <Animes:ArrivaLogoUserControl Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="1" />
+    <Animes:SimpleTimerAnimation  Margin="10" IsOn="{Binding IsChecked, ElementName=btnOnOff}" Grid.Column="2" />
+
+    <ToggleButton Content="_On/Off" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="btnOnOff" IsChecked="{Binding IsOn}" Background="#f88" />
+    <!--
+    <Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />
+    <Animes:BtnTargeterUserControl  Margin="10" />
+    -->
+
+
+    <local:ArcPi Grid.Column="3" Angle="{Binding ElementName=s1, Path=Value}"/>
+    <Slider Grid.Column="3" Value="33" Maximum="100" x:Name="s1" VerticalAlignment="Bottom" />
+
+  </Grid>
+</Window>

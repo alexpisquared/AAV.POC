@@ -10,7 +10,7 @@ namespace AAV.Animation.POC
       base.OnStartup(e);
 
       new
-        Window1
+        ArrivalLogoTester
         //MainWindow
         //AwesomeDataGrid
         ().ShowDialog();
