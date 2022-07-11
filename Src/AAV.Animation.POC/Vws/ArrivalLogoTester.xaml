@@ -7,7 +7,7 @@
         <ResourceDictionary Source="/AAV.Animation.POC;component/RsrsDict/Dictionary1.xaml" />
       </ResourceDictionary.MergedDictionaries>
 
-      <Style TargetType="{x:Type Button}" x:Key="NavButton">
+      <Style TargetType="{x:Type Button}" x:Key="RoundButton">
         <Setter Property="Width"                Value="26"/>
         <Setter Property="Height"               Value="26"/>
         <Setter Property="Margin"               Value="0 0 0 0"  />
@@ -62,7 +62,7 @@
     <Viewbox Grid.Column="3">
       <Grid>
         <local:ArcPi Radiu="16" Width="32" Height="32" x:Name="arcpi1" />
-        <Button      Content="X" Foreground="#0c0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource NavButton}" Background="#00f" />
+        <Button      Content="X" Foreground="#0c0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource RoundButton}" Background="#00f" />
       </Grid>
     </Viewbox>
 
