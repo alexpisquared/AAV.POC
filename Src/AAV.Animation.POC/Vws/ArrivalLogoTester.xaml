@@ -29,9 +29,11 @@
   <Window.Triggers>
     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
       <BeginStoryboard>
-        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" Timeline.DesiredFrameRate="32">
-          <DoubleAnimation Duration="0:0:2" From="0" To="99.9" AutoReverse="True" Storyboard.TargetName="s1" Storyboard.TargetProperty="Value" EasingFunction="{StaticResource sb}" />
-          <DoubleAnimation Duration="0:0:2" From="0" To="99.9" AutoReverse="True" Storyboard.TargetName="arcpi1" Storyboard.TargetProperty="Angle" EasingFunction="{StaticResource sb}" />
+        <Storyboard x:Name="sbRotoMobile" RepeatBehavior="Forever" Timeline.DesiredFrameRate="128">
+          <!--<DoubleAnimation Duration="0:0:2" From="0" To="99.9" AutoReverse="True" Storyboard.TargetName="slider1" Storyboard.TargetProperty="Value" EasingFunction="{StaticResource sb}" />-->
+          <DoubleAnimation  Duration="0:0:1.5"                   From="15" To="06"   Storyboard.TargetName="arcpi1" Storyboard.TargetProperty="Angle" EasingFunction="{StaticResource eo}" />
+          <DoubleAnimation BeginTime="0:0:1.5" Duration="0:0:1"  From="06" To="99.9" Storyboard.TargetName="arcpi1" Storyboard.TargetProperty="Angle" EasingFunction="{StaticResource qb}" />
+          <DoubleAnimation BeginTime="0:0:2.5" Duration="0:0:.5"           To="26.0" Storyboard.TargetName="arcpi1" Storyboard.TargetProperty="Angle" EasingFunction="{StaticResource qb}" />
           <!--<DoubleAnimation Duration="0:0:1" From="+1.5707" To="+7.8535" Storyboard.TargetName="bg1" Storyboard.TargetProperty="EndAngle"   AccelerationRatio=".5" />-->
         </Storyboard>
       </BeginStoryboard>
@@ -53,9 +55,9 @@
     <Animes:ArrivaThirdUserControl Margin="10" Grid.Column="1" />
     <Animes:BtnTargeterUserControl  Margin="10" />
     -->
-    <local:ArcPi Grid.Column="2" Angle="{Binding ElementName=s1, Path=Value}" Radiu="100" Width="200" Height="200" />
-    <TextBlock   Grid.Column="2"  Text="{Binding ElementName=s1, Path=Value, StringFormat='{}{0:N1}'}" Foreground="#0c0" d:Text="123.222" VerticalAlignment="Center" HorizontalAlignment="Center" />
-    <Slider      Grid.Column="2" Value="33" Maximum="100" x:Name="s1" VerticalAlignment="Bottom" />
+    <local:ArcPi Grid.Column="2" Angle="{Binding ElementName=slider1, Path=Value}" Radiu="100" Width="200" Height="200" />
+    <TextBlock   Grid.Column="2"  Text="{Binding ElementName=slider1, Path=Value, StringFormat='{}{0:N1}'}" Foreground="#0c0" d:Text="123.222" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    <Slider      Grid.Column="2" Value="33" Maximum="100" x:Name="slider1" VerticalAlignment="Bottom" />
 
     <Viewbox Grid.Column="3">
       <Grid>
