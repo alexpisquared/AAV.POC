@@ -2,6 +2,7 @@
              xmlns:lcl="clr-namespace:AAV.Animation.POC.Animes"                
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              d:DesignHeight="450" d:DesignWidth="800" x:Name="ths">
+  <!--//todo: use this drop panel approach for gravity anime as well, since it is so smooth here-->
   <UserControl.Resources>
     <ResourceDictionary>
       <sys:Double   x:Key="blur">0</sys:Double>
@@ -16,16 +17,7 @@
         <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="{StaticResource bt257}"         To="0.00" Duration="{StaticResource du757}" EasingFunction="{StaticResource si}" />
         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"             To="+400" Duration="{StaticResource du757}" EasingFunction="{StaticResource ei0}" />
       </Storyboard>
-    </ResourceDictionary>
-  </UserControl.Resources>
-  <Grid x:Name="pnlGravityAnimeDropPanel" Cursor="Wait" ToolTip="Wait! Loading...">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="2*"/>
-      <RowDefinition/>
-      <RowDefinition Height="2*"/>
-    </Grid.RowDefinitions>
-    <Grid.Style>
-      <Style TargetType="Grid">
+      <Style TargetType="{x:Type Grid}" x:Key="DropPanel">
         <Setter Property="Opacity" Value="1"/>
         <Setter Property="RenderTransform">
           <Setter.Value>
@@ -47,7 +39,14 @@
           </DataTrigger>
         </Style.Triggers>
       </Style>
-    </Grid.Style>
+    </ResourceDictionary>
+  </UserControl.Resources>
+  <Grid x:Name="pnlGravityAnimeDropPanel" Cursor="Wait" ToolTip="Wait! Loading..." Style="{StaticResource DropPanel}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
 
     <lcl:ArrivaLogoUserControl IsOn="{Binding ElementName=ths, Path=IsOn}" Grid.Row="1" />
 
