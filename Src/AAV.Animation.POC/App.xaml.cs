@@ -1,19 +1,15 @@
-﻿using System.Windows;
-using AAV.Animation.POC.Vws;
+﻿using AAV.Animation.POC.Vws;
 
-namespace AAV.Animation.POC
+namespace AAV.Animation.POC;
+
+public partial class App : Application
 {
-    public partial class App : Application
-    {
-    protected override void OnStartup(StartupEventArgs e)
-    {
-      base.OnStartup(e);
+  protected override void OnStartup(StartupEventArgs e)
+  {
+    base.OnStartup(e);
 
-      new
-        ArrivalLogoTester
-        //MainWindow
-        //AwesomeDataGrid
-        ().ShowDialog();
-    }
+    new ArrivalLogoTester().Show();
+    new MainWindow().Show();
+    //new AwesomeDataGrid().Show();
   }
 }
